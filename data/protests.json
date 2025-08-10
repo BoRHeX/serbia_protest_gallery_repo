@@ -6,7 +6,7 @@
     "lng": 20.4612,
     "type": "marš",
     "title": "Opšti štrajk i masovni marš u Beogradu",
-    "description": "Talasi protesta kulminiraju opštim štrajkom i velikom povorkom kroz centar Beograda.",
+    "description": "Opšti štrajk i velika povorka kroz centar Beograda — kulminacija višenedeljnih protesta.",
     "demands": [
       "Odgovornost vlasti",
       "Transparentnost rekonstrukcija"
@@ -52,9 +52,10 @@
     "lng": 21.1878,
     "type": "vigilija",
     "title": "Srednjoškolci: 15 minuta tišine",
-    "description": "Učenici drže tihi protest kao znak podrške pokretu.",
+    "description": "Tihi protest i solidarnost sa žrtvama i studentima.",
     "demands": [
-      "Bezbednost i odgovornost"
+      "Bezbednost",
+      "Odgovornost"
     ],
     "sources": [
       {
@@ -71,7 +72,7 @@
     "lng": 20.687,
     "type": "marš",
     "title": "Kraljevo: jaja na SNS kancelarije",
-    "description": "Protestanti gađaju jajima lokalne kancelarije; rastu tenzije u gradovima širom Srbije.",
+    "description": "Građani gađaju jajima lokalne kancelarije; tenzije rastu širom Srbije.",
     "demands": [
       "Prestanak nasilja",
       "Odgovornost lokalnih vlasti"
@@ -82,7 +83,7 @@
         "url": "https://www.helsinki.org.rs/doc/AD%20HOC%20-%20PRVI%20IZVESTAJ%20-%20ENG.pdf"
       }
     ],
-    "thumbnail": "assets/beograd.png"
+    "thumbnail": "assets/kraljevo.png"
   },
   {
     "date": "2025-02-01",
@@ -91,10 +92,10 @@
     "lng": 19.8335,
     "type": "blokada",
     "title": "Blokade tri mosta u Novom Sadu",
-    "description": "Tens of thousands blokiraju Varadinski, Žeželjev i Most slobode.",
+    "description": "Masovne blokade Varadinskog, Žeželjevog i Mosta slobode.",
     "demands": [
       "Uvid u dokumentaciju",
-      "Odgovornost"
+      "Odgovornost za kolaps"
     ],
     "sources": [
       {
@@ -113,12 +114,11 @@
     "lat": 44.0128,
     "lng": 20.9114,
     "type": "marš",
-    "title": "Kragujevac: desetine hiljada",
-    "description": "Simbolična blokada 15:15 — zahtevi za objavu dokumenata i odgovornost.",
+    "title": "Desetine hiljada u Kragujevcu",
+    "description": "Symbolična blokada u 15:15; veliki gradski skup.",
     "demands": [
       "Objava dokumenata",
-      "Odgovornost",
-      "Podrška obrazovanju"
+      "Odgovornost"
     ],
     "sources": [
       {
@@ -126,7 +126,7 @@
         "url": "https://www.reuters.com/world/europe/thousands-rally-serbia-over-deadly-railway-disaster-2025-02-15/"
       }
     ],
-    "thumbnail": "assets/beograd.png"
+    "thumbnail": "assets/kragujevac.png"
   },
   {
     "date": "2025-03-01",
@@ -134,16 +134,20 @@
     "lat": 43.3209,
     "lng": 21.8958,
     "type": "vigilija",
-    "title": "Niš: tihi marš i komemoracija",
-    "description": "Hiljade u tišini odaju počast žrtvama; momentum pokreta raste.",
+    "title": "Niš: 15 minuta tišine",
+    "description": "Masovna komemoracija i studentski marš do centra.",
     "demands": [
-      "Odgovornost za Novi Sad",
-      "Vladavina prava"
+      "Vladavina prava",
+      "Nezavisna istraga"
     ],
     "sources": [
       {
         "name": "Reuters",
         "url": "https://www.reuters.com/world/europe/serbians-hold-silent-protest-honour-railway-station-victims-2025-03-01/"
+      },
+      {
+        "name": "Al Jazeera",
+        "url": "https://www.aljazeera.com/news/2025/3/1/thousands-protest-in-serbia-to-honour-railway-station-disaster-victims"
       }
     ],
     "thumbnail": "assets/nis.png",
@@ -158,14 +162,14 @@
     "lng": 20.4606,
     "type": "institucije",
     "title": "Dimne bombe i baklje u Skupštini",
-    "description": "Najmanje troje poslanika povređeno tokom haosa u parlamentu.",
+    "description": "Haos u parlamentu; povređeno najmanje troje poslanika.",
     "demands": [
-      "Transparentnost rada Skupštine",
+      "Transparentnost rada",
       "Poštovanje procedure"
     ],
     "sources": [
       {
-        "name": "AP",
+        "name": "AP News",
         "url": "https://apnews.com/article/serbia-lawmakers-injured-parliament-5f8079017f4d0e102e823233af55a51c"
       }
     ],
@@ -177,11 +181,10 @@
     "lat": 44.8125,
     "lng": 20.4612,
     "type": "sukobi",
-    "title": "Masovni skup i navodi o akustičnom uređaju",
-    "description": "Stampedo u masi; AP i drugi traže istragu o navodnoj upotrebi ‘zvučnog oružja’.",
+    "title": "Veliki skup i navodi o akustičnom uređaju",
+    "description": "Stampedo i povrede; oprečni izveštaji o ‘zvučnom oružju’.",
     "demands": [
-      "Nezavisna forenzička istraga",
-      "Zabrana opreme protiv mirnih skupova"
+      "Nezavisna forenzička istraga"
     ],
     "sources": [
       {
@@ -202,7 +205,7 @@
     "lng": 20.4612,
     "type": "kontraskup",
     "title": "Veliki provladin skup (Orban prisutan)",
-    "description": "Vlast organizuje miting podrške u Beogradu; prisustvo stranih lidera.",
+    "description": "Kontraskup podrške vlastima u Beogradu.",
     "demands": [
       "Podrška vlastima"
     ],
@@ -220,7 +223,7 @@
     "lat": 48.5734,
     "lng": 7.7521,
     "type": "međunarodno",
-    "title": "Tour de Strasbourg: sastanci sa EP/SE",
+    "title": "Tour de Strasbourg: susreti sa EP/SE",
     "description": "~80 studenata posle 13 dana vožnje — prijemi u EP i Savetu Evrope.",
     "demands": [
       "Vladavina prava",
@@ -243,8 +246,8 @@
     "lat": 44.8125,
     "lng": 20.4612,
     "type": "institucije",
-    "title": "Zahtev za vanredne izbore",
-    "description": "Protesti kulminiraju zahtevom za izbore kao institucionalni izlaz.",
+    "title": "Javni zahtev za vanredne izbore",
+    "description": "Pokret formalizuje zahtev za izbore kao izlaz iz krize.",
     "demands": [
       "Prevremeni izbori"
     ],
@@ -263,7 +266,7 @@
     "lng": 19.525,
     "type": "sukobi",
     "title": "Kula: pirotehnika i napadi na građane",
-    "description": "N1 izveštava o pirotehnici i jajima na građane tokom protesta.",
+    "description": "Napadi prilikom protesta; jaja i pirotehnika na okupljene.",
     "demands": [
       "Procesuiranje napadača",
       "Bezbednost skupova"
@@ -285,8 +288,8 @@
     "lat": 44.8125,
     "lng": 20.4612,
     "type": "sukobi",
-    "title": "Masovni protest i hapšenja",
-    "description": "Sukobi sa policijom, suzavac; desetine privedenih.",
+    "title": "Vidovdan: masovni protest i hapšenja",
+    "description": "Veliki skup u Beogradu; sukobi sa policijom i desetine privođenja.",
     "demands": [
       "Prevremeni izbori",
       "Oslobađanje privedenih"
@@ -295,6 +298,33 @@
       {
         "name": "Reuters",
         "url": "https://www.reuters.com/world/serbias-students-opposition-rally-demand-snap-elections-2025-06-28/"
+      },
+      {
+        "name": "PBS",
+        "url": "https://www.pbs.org/newshour/world/massive-anti-government-protest-in-serbias-capital-leads-to-dozens-of-arrests"
+      },
+      {
+        "name": "AP",
+        "url": "https://apnews.com/article/5b3825302a59991c4ad4046c80e7ce45"
+      }
+    ],
+    "thumbnail": "assets/beograd.png"
+  },
+  {
+    "date": "2025-06-29",
+    "city": "Beograd",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "blokada",
+    "title": "Barikade u Beogradu nakon sukoba",
+    "description": "Postavljene barikade u gradu; policija uklanja prepreke tokom noći.",
+    "demands": [
+      "Puštanje privedenih"
+    ],
+    "sources": [
+      {
+        "name": "Wikipedia summary (with refs)",
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%93present_Serbian_anti-corruption_protests#Vidovdan_protests"
       }
     ],
     "thumbnail": "assets/beograd.png"
@@ -306,7 +336,7 @@
     "lng": 21.0059,
     "type": "blokada",
     "title": "Građanska neposlušnost širom zemlje",
-    "description": "Nove blokade nakon hapšenja; Amnesty i drugi upozoravaju na policijsko postupanje.",
+    "description": "Nove blokade i ‘mačka-miš’ sa policijom; talas hapšenja.",
     "demands": [
       "Puštanje uhapšenih",
       "Istraga postupanja policije"
@@ -320,13 +350,53 @@
     "thumbnail": "assets/beograd.png"
   },
   {
+    "date": "2025-07-02",
+    "city": "Beograd / Novi Sad / Novi Pazar",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "sukobi",
+    "title": "Zaplena barikada i nova privođenja",
+    "description": "Protesti i blokade u tri grada; izvestan broj privedenih.",
+    "demands": [
+      "Oslobađanje privedenih",
+      "Stop represiji"
+    ],
+    "sources": [
+      {
+        "name": "Wikipedia summary (with refs)",
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%93present_Serbian_anti-corruption_protests#Vidovdan_protests"
+      }
+    ],
+    "thumbnail": "assets/beograd.png"
+  },
+  {
+    "date": "2025-07-29",
+    "city": "Novi Pazar / Kraljevo / Novi Sad",
+    "lat": 43.1367,
+    "lng": 20.5122,
+    "type": "marš",
+    "title": "Skidanje šatora i regionalni protesti",
+    "description": "Okupljanja nakon uklanjanja studentskog kampa u Novom Pazaru.",
+    "demands": [
+      "Akademske slobode",
+      "Stop nasilju"
+    ],
+    "sources": [
+      {
+        "name": "Balkan Insight (context)",
+        "url": "https://balkaninsight.com/2025/07/30/serbia-providing-support-to-violent-groups-to-stop-protests-report/"
+      }
+    ],
+    "thumbnail": "assets/novi_pazar.png"
+  },
+  {
     "date": "2025-08-01",
     "city": "Novi Sad",
     "lat": 45.2671,
     "lng": 19.8335,
     "type": "institucije",
     "title": "Uhapšeni u slučaju nadstrešnice",
-    "description": "Reuters: više uhapšenih u istrazi o kolapsu nadstrešnice na stanici.",
+    "description": "Više uhapšenih u istrazi o kolapsu nadstrešnice na stanici.",
     "demands": [
       "Efikasna istraga",
       "Transparentnost"
@@ -346,7 +416,7 @@
     "lng": 20.4612,
     "type": "međunarodno",
     "title": "UN (OHCHR): Zaustaviti gušenje pokreta",
-    "description": "Specijalni izvestioci UN pozivaju vlasti da zaštite prava i akademske slobode.",
+    "description": "Specijalni izvestioci UN upozoravaju na kršenja prava i akademskih sloboda.",
     "demands": [
       "Poštovanje ljudskih prava",
       "Istraga postupanja"
@@ -365,21 +435,18 @@
     "lat": 45.3608,
     "lng": 19.5881,
     "type": "umetnost",
-    "title": "‘Slovaci na protestima – podrška studentima’ napadnuta izložba",
-    "description": "Cepanje fotografija i napadi tokom Slovačkih svečanosti; izložba najavljena ponovo.",
+    "title": "‘Slovaci na protestima’ – napadnuta izložba",
+    "description": "Upad i cepanje fotografija na javnoj izložbi; privođenja.",
     "demands": [
       "Zaštita umetničkog izraza",
       "Sankcionisanje napadača"
     ],
     "sources": [
       {
-        "name": "Nova.rs",
-        "url": "https://nova.rs/vesti/hronika/pristalice-sns-upale-na-manifestaciju-slovacke-svecanosti-i-cepali-fotografije-sa-protesta-raste-tenzija-u-backom-petrovcu-stigla-i-policija-video/"
+        "name": "Vreme (EN)",
+        "url": "https://vreme.com/en/kultura/batinasi-pocepali-fotografije-na-izlozbi-u-backom-petrovcu/"
       }
     ],
-    "thumbnail": "assets/backi_petrovac.png",
-    "photos": [
-      "assets/backi_petrovac.png"
-    ]
+    "thumbnail": "assets/backi_petrovac.png"
   }
 ]

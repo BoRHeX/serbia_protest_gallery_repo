@@ -1,1 +1,1 @@
-Static gallery with lightbox & local thumbnails. Publish via GitHub Pages. Edit data/protests.json; put images in /assets.
+v7: Expanded June–July coverage; keep adding local photos in /assets.
