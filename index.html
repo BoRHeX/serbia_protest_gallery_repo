@@ -41,53 +41,60 @@
   </div>
 </section>
 
-<section class="mapwrap"><div id="map"></div></section>
+<section class="mapwrap">
+  <div id="map"></div>
+  <div class="legend" id="legend"></div>
+</section>
+
 <main id="timeline"><div class="empty">Učitavanje podataka…</div></main>
 <footer><p>Javna, čitljiva, arhivska izložba. Linkovi vode ka izvorima. © Zajednica.</p></footer>
+
+<div id="lightbox" class="lightbox hidden">
+  <button class="close" id="lbClose" aria-label="Zatvori">×</button>
+  <img id="lbImg" alt="fotografija">
+  <div class="lbCaption" id="lbCap"></div>
+  <button class="nav prev" id="lbPrev" aria-label="Prethodna">‹</button>
+  <button class="nav next" id="lbNext" aria-label="Sledeća">›</button>
+</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
 const MONTHS = ['Nov 2024','Dec 2024','Jan 2025','Feb 2025','Mar 2025','Apr 2025','Maj 2025','Jun 2025','Jul 2025','Avg 2025'];
+const COLORS = { "marš":"#2a5f36","blokada":"#6a4b2d","vigilija":"#5b5a2a","sukobi":"#6f2a2a","umetnost":"#6a2a6a","institucije":"#2a5a6f","međunarodno":"#2a356f","kontraskup":"#5a2a2a" };
 const monthSlider = document.getElementById('monthSlider');
 const monthLabel = document.getElementById('monthLabel');
 const cityFilter = document.getElementById('cityFilter');
 const typeFilter = document.getElementById('typeFilter');
 const searchBox = document.getElementById('searchBox');
 const timeline = document.getElementById('timeline');
-let MAP, CLUSTER, PROTESTS=[];
+const legend = document.getElementById('legend');
+let MAP, CLUSTER, PROTESTS=[], CURRENT_LIGHTBOX=[], LB_INDEX=0;
 
+function initLegend(){ legend.innerHTML = Object.entries(COLORS).map(([k,c])=>`<span><i style="background:${c}"></i>${k}</span>`).join(''); }
 function initMap(){
   MAP = L.map('map',{scrollWheelZoom:false}).setView([44.8,20.46],7);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'&copy; OpenStreetMap'}).addTo(MAP);
-  CLUSTER = L.markerClusterGroup();
-  MAP.addLayer(CLUSTER);
+  CLUSTER = L.markerClusterGroup(); MAP.addLayer(CLUSTER);
 }
-
+function markerIcon(color){
+  const svg = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='30' height='42'><path d='M15 0C7 0 1 6 1 14c0 10 14 28 14 28s14-18 14-28C29 6 23 0 15 0z' fill='${color}'/><circle cx='15' cy='14' r='6' fill='white'/></svg>`);
+  return L.icon({ iconUrl:`data:image/svg+xml,${svg}`, iconSize:[30,42], iconAnchor:[15,42], popupAnchor:[0,-36]});
+}
 function refreshMap(events){
   CLUSTER.clearLayers();
   events.forEach(e=>{
     if (!e.lat || !e.lng) return;
-    const m = L.marker([e.lat,e.lng]).bindPopup(`<b>${e.title}</b><br>${new Date(e.date).toLocaleDateString('sr-RS')} — ${e.city}`);
+    const m = L.marker([e.lat,e.lng], {icon: markerIcon(COLORS[e.type]||'#324a6f')})
+      .bindPopup(`<b>${e.title}</b><br>${new Date(e.date).toLocaleDateString('sr-RS')} — ${e.city}`);
     CLUSTER.addLayer(m);
   });
-  if (CLUSTER.getLayers().length){
-    MAP.fitBounds(CLUSTER.getBounds().pad(0.2));
-  }
+  if (CLUSTER.getLayers().length){ MAP.fitBounds(CLUSTER.getBounds().pad(0.2)); }
 }
-
-function fmtDate(d){
-  const dt = new Date(d);
-  return dt.toLocaleDateString('sr-RS', {year:'numeric', month:'short', day:'2-digit'});
-}
-function thumb(e){
-  if (e.thumbnail) return `<img src="${e.thumbnail}" referrerpolicy="no-referrer" loading="lazy" alt="thumbnail">`;
-  const text = (e.city||'').slice(0,2).toUpperCase();
-  const svg = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='240' height='140'><rect width='100%' height='100%' fill='#1b2638'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='#a9c6ff' font-family='Inter,Arial' font-size='36'>${text}</text></svg>`);
-  return `<img src="data:image/svg+xml,${svg}" alt="placeholder">`;
-}
-function card(e){
-  const imgs = thumb(e) + (e.photos?.length ? e.photos.slice(0,5).map(u=>`<img src="${u}" loading="lazy" referrerpolicy="no-referrer">`).join('') : '');
+function fmtDate(d){ const dt = new Date(d); return dt.toLocaleDateString('sr-RS', {year:'numeric', month:'short', day:'2-digit'}); }
+function imgTag(src, cap=''){ return `<figure><img src="${src}" loading="lazy" data-cap="${cap}"><figcaption>${cap||''}</figcaption></figure>`; }
+function card(e, index){
+  const thumbs = (e.photos?.length ? e.photos : (e.thumbnail?[e.thumbnail]:[])).slice(0,6).map((u,i)=>imgTag(u, e.photo_captions?.[i]||'')).join('');
   return `
     <article class="card ${e.type}">
       <div class="date">${fmtDate(e.date)}</div>
@@ -95,24 +102,33 @@ function card(e){
       <div class="meta"><span>📍 ${e.city}</span><span class="tag">${e.type}</span></div>
       <p class="desc">${e.description}</p>
       ${e.demands?.length ? '<ul class="demands">'+e.demands.map(d=>'<li>'+d+'</li>').join('')+'</ul>' : ''}
-      <div class="photos">${imgs}</div>
+      ${thumbs ? '<div class="photos" data-index="'+index+'">'+thumbs+'</div>' : ''}
       <div class="links">${e.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.name}</a>`).join('')}</div>
     </article>`;
 }
-
 function buildCityFilter(){
   cityFilter.innerHTML = '<option value="">Sve lokacije</option>';
   Array.from(new Set(PROTESTS.map(e => e.city))).sort().forEach(c => {
     const o = document.createElement('option'); o.value=c; o.textContent=c; cityFilter.appendChild(o);
   });
 }
-
-function monthCutoff(idx){
-  const base = new Date('2024-11-01T00:00:00Z');
-  base.setUTCMonth(base.getUTCMonth()+idx+1);
-  return base;
+function monthCutoff(idx){ const base = new Date('2024-11-01T00:00:00Z'); base.setUTCMonth(base.getUTCMonth()+idx+1); return base; }
+function openLightbox(images, startIdx=0){
+  const lb = document.getElementById('lightbox'), img = document.getElementById('lbImg'), cap = document.getElementById('lbCap');
+  CURRENT_LIGHTBOX = images; LB_INDEX = startIdx;
+  function show(i){ LB_INDEX = (i+CURRENT_LIGHTBOX.length)%CURRENT_LIGHTBOX.length; const el = CURRENT_LIGHTBOX[LB_INDEX]; img.src = el.src; cap.textContent = el.getAttribute('data-cap') || ''; }
+  document.getElementById('lbPrev').onclick = () => show(LB_INDEX-1);
+  document.getElementById('lbNext').onclick = () => show(LB_INDEX+1);
+  document.getElementById('lbClose').onclick = () => lb.classList.add('hidden');
+  lb.onclick = (e)=>{ if(e.target===lb) lb.classList.add('hidden'); };
+  lb.classList.remove('hidden'); show(LB_INDEX);
 }
-
+function bindLightbox(){
+  document.querySelectorAll('.photos').forEach(grid => {
+    const imgs = Array.from(grid.querySelectorAll('img'));
+    imgs.forEach((im, i) => im.addEventListener('click', ()=> openLightbox(imgs, i)));
+  });
+}
 function render(){
   if (!PROTESTS.length){ timeline.innerHTML = '<div class="empty">Nema podataka za prikaz.</div>'; return; }
   const idx = parseInt(monthSlider.value,10);
@@ -125,26 +141,17 @@ function render(){
     if (new Date(e.date) > limit) return false;
     if (csel && e.city !== csel) return false;
     if (tsel && e.type !== tsel) return false;
-    if (q){
-      const hay=(e.title+' '+e.description+' '+(e.demands||[]).join(' ')).toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
+    if (q){ const hay=(e.title+' '+e.description+' '+(e.demands||[]).join(' ')).toLowerCase(); if (!hay.includes(q)) return false; }
     return true;
   }).sort((a,b)=>new Date(a.date)-new Date(b.date));
-  timeline.innerHTML = filtered.map(card).join('');
+  timeline.innerHTML = filtered.map((e,i)=>card(e,i)).join('');
+  bindLightbox();
   refreshMap(filtered);
 }
-
 async function boot(){
-  initMap();
-  try {
-    const res = await fetch('data/protests.json', {cache:'no-store'});
-    PROTESTS = await res.json();
-  } catch (e) {
-    console.error(e);
-    timeline.innerHTML = '<div class="empty">Greška pri učitavanju podataka.</div>';
-    return;
-  }
+  initLegend(); initMap();
+  try { const res = await fetch('data/protests.json',{cache:'no-store'}); PROTESTS = await res.json(); }
+  catch (e) { timeline.innerHTML = '<div class="empty">Greška pri učitavanju podataka.</div>'; return; }
   buildCityFilter();
   monthSlider.addEventListener('input', render);
   cityFilter.addEventListener('change', render);

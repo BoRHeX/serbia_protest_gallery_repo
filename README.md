@@ -1,4 +1,1 @@
-# Serbia Protest Gallery (v5)
-Static site. Data fetched via `fetch('data/protests.json')` to work correctly on GitHub Pages.
-
-Publish: upload to a public repo → Settings → Pages → Deploy from branch (root).
+Static gallery with lightbox & local thumbnails. Publish via GitHub Pages. Edit data/protests.json; put images in /assets.
