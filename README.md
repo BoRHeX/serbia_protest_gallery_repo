@@ -1,8 +1,4 @@
-# Serbia Protest Gallery (Nov 2024 – Aug 2025)
-Static, read‑only archive of protests with sources and map.
+# Serbia Protest Gallery (v5)
+Static site. Data fetched via `fetch('data/protests.json')` to work correctly on GitHub Pages.
 
-## Run
-Open `index.html` locally or host on GitHub Pages/Netlify.
-
-## Contribute
-Edit `data/protests.json` and open a PR. See types and schema inside the file.
+Publish: upload to a public repo → Settings → Pages → Deploy from branch (root).

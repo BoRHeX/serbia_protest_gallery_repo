@@ -22,6 +22,7 @@ main{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(360
 .card .links a{color:#9dd1ff;text-decoration:none;border-bottom:1px dotted #579dd6}
 .card .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
 .card .photos img{width:100%;height:72px;object-fit:cover;border-radius:8px;border:1px solid #233148}
+.empty{grid-column:1/-1;color:#9fb4d4;padding:24px;text-align:center;border:1px dashed #2a3b57;border-radius:12px;background:#0c0e12}
 footer{padding:20px;color:#8fa2bd;text-align:center;border-top:1px solid #1c2230}
 .card.marš{border-color:#2a5f36}
 .card.blokada{border-color:#6a4b2d}

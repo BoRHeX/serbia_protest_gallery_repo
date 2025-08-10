@@ -193,7 +193,7 @@
     "lat": 44.8125,
     "lng": 20.4612,
     "type": "kontraskup",
-    "title": "Veliki provladin skup (saobraćaj, Orban)",
+    "title": "Veliki provladin skup (Orban prisutan)",
     "description": "Vlast organizuje miting podrške u Beogradu; prisustvo stranih lidera.",
     "demands": [
       "Podrška vlastima"
@@ -265,10 +265,6 @@
       {
         "name": "N1 (EN)",
         "url": "https://n1info.rs/english/news/incidents-at-protest-in-kula-ruling-party-supporters-launch-eggs-pyrotechnics-at-locals/"
-      },
-      {
-        "name": "Wikipedia (sum.)",
-        "url": "https://en.wikipedia.org/wiki/2024%E2%80%93present_Serbian_anti-corruption_protests"
       }
     ],
     "thumbnail": ""
@@ -317,10 +313,6 @@
       {
         "name": "Balkan Insight",
         "url": "https://balkaninsight.com/2025/06/30/civil-disobedience-roils-serbia-following-arrests-of-protesters/"
-      },
-      {
-        "name": "Amnesty",
-        "url": "https://www.amnesty.org/en/latest/news/2025/07/serbia-authorities-must-end-unlawful-use-of-force-against-protesters-and-investigate-reports-of-police-violence/"
       }
     ],
     "thumbnail": ""

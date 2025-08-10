@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Izložba protesta u Srbiji — poslednjih 9 meseci</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
-  <meta name="description" content="Interaktivna hronologija sa mapom, fotografijama i izvorima.">
 </head>
 <body>
 <header>
@@ -43,16 +42,11 @@
 </section>
 
 <section class="mapwrap"><div id="map"></div></section>
-
-<main id="timeline"></main>
-
-<footer>
-  <p>Javna, čitljiva, arhivska izložba. Linkovi vode ka izvorima. © Zajednica.</p>
-</footer>
+<main id="timeline"><div class="empty">Učitavanje podataka…</div></main>
+<footer><p>Javna, čitljiva, arhivska izložba. Linkovi vode ka izvorima. © Zajednica.</p></footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<script src="data/protests.json" type="application/json" id="data"></script>
 <script>
 const MONTHS = ['Nov 2024','Dec 2024','Jan 2025','Feb 2025','Mar 2025','Apr 2025','Maj 2025','Jun 2025','Jul 2025','Avg 2025'];
 const monthSlider = document.getElementById('monthSlider');
@@ -61,23 +55,27 @@ const cityFilter = document.getElementById('cityFilter');
 const typeFilter = document.getElementById('typeFilter');
 const searchBox = document.getElementById('searchBox');
 const timeline = document.getElementById('timeline');
-let MAP, CLUSTER;
+let MAP, CLUSTER, PROTESTS=[];
 
-function parseData(){
-  const raw = document.getElementById('data').textContent;
-  try { return JSON.parse(raw); } catch(e){ console.error(e); return []; }
+function initMap(){
+  MAP = L.map('map',{scrollWheelZoom:false}).setView([44.8,20.46],7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'&copy; OpenStreetMap'}).addTo(MAP);
+  CLUSTER = L.markerClusterGroup();
+  MAP.addLayer(CLUSTER);
 }
-const PROTESTS = parseData();
 
-Array.from(new Set(PROTESTS.map(e => e.city))).sort().forEach(c => {
-  const o = document.createElement('option'); o.value=c; o.textContent=c; cityFilter.appendChild(o);
-});
-
-function monthCutoff(idx){
-  const base = new Date('2024-11-01T00:00:00Z');
-  base.setUTCMonth(base.getUTCMonth()+idx+1);
-  return base;
+function refreshMap(events){
+  CLUSTER.clearLayers();
+  events.forEach(e=>{
+    if (!e.lat || !e.lng) return;
+    const m = L.marker([e.lat,e.lng]).bindPopup(`<b>${e.title}</b><br>${new Date(e.date).toLocaleDateString('sr-RS')} — ${e.city}`);
+    CLUSTER.addLayer(m);
+  });
+  if (CLUSTER.getLayers().length){
+    MAP.fitBounds(CLUSTER.getBounds().pad(0.2));
+  }
 }
+
 function fmtDate(d){
   const dt = new Date(d);
   return dt.toLocaleDateString('sr-RS', {year:'numeric', month:'short', day:'2-digit'});
@@ -101,24 +99,22 @@ function card(e){
       <div class="links">${e.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.name}</a>`).join('')}</div>
     </article>`;
 }
-function initMap(){
-  MAP = L.map('map',{scrollWheelZoom:false}).setView([44.8,20.46],7);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'&copy; OpenStreetMap'}).addTo(MAP);
-  CLUSTER = L.markerClusterGroup();
-  MAP.addLayer(CLUSTER);
-}
-function refreshMap(events){
-  CLUSTER.clearLayers();
-  events.forEach(e=>{
-    if (!e.lat || !e.lng) return;
-    const m = L.marker([e.lat,e.lng]).bindPopup(`<b>${e.title}</b><br>${fmtDate(e.date)} — ${e.city}`);
-    CLUSTER.addLayer(m);
+
+function buildCityFilter(){
+  cityFilter.innerHTML = '<option value="">Sve lokacije</option>';
+  Array.from(new Set(PROTESTS.map(e => e.city))).sort().forEach(c => {
+    const o = document.createElement('option'); o.value=c; o.textContent=c; cityFilter.appendChild(o);
   });
-  if (CLUSTER.getLayers().length){
-    MAP.fitBounds(CLUSTER.getBounds().pad(0.2));
-  }
 }
+
+function monthCutoff(idx){
+  const base = new Date('2024-11-01T00:00:00Z');
+  base.setUTCMonth(base.getUTCMonth()+idx+1);
+  return base;
+}
+
 function render(){
+  if (!PROTESTS.length){ timeline.innerHTML = '<div class="empty">Nema podataka za prikaz.</div>'; return; }
   const idx = parseInt(monthSlider.value,10);
   monthLabel.textContent = MONTHS[idx];
   const limit = monthCutoff(idx);
@@ -138,12 +134,25 @@ function render(){
   timeline.innerHTML = filtered.map(card).join('');
   refreshMap(filtered);
 }
-initMap();
-monthSlider.addEventListener('input', render);
-cityFilter.addEventListener('change', render);
-typeFilter.addEventListener('change', render);
-searchBox.addEventListener('input', render);
-render();
+
+async function boot(){
+  initMap();
+  try {
+    const res = await fetch('data/protests.json', {cache:'no-store'});
+    PROTESTS = await res.json();
+  } catch (e) {
+    console.error(e);
+    timeline.innerHTML = '<div class="empty">Greška pri učitavanju podataka.</div>';
+    return;
+  }
+  buildCityFilter();
+  monthSlider.addEventListener('input', render);
+  cityFilter.addEventListener('change', render);
+  typeFilter.addEventListener('change', render);
+  searchBox.addEventListener('input', render);
+  render();
+}
+boot();
 </script>
 </body>
 </html>
