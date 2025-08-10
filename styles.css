@@ -1,0 +1,33 @@
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:#e7ecf6;background:#0f1115}
+header{padding:32px 16px 10px;text-align:center;background:linear-gradient(180deg,#171a22,transparent)}
+h1{margin:0;font-weight:800;letter-spacing:.6px;color:#eef3fb}
+.sub{margin:6px 0 0;color:#aab3c2}
+.controls{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:12px 16px;border-top:1px solid #1c2230;border-bottom:1px solid #1c2230;background:#0c0e12;position:sticky;top:0;z-index:10}
+.rangewrap{display:flex;align-items:center;gap:10px;color:#d7deea}
+#monthSlider{width:300px}
+.filters{display:flex;gap:10px;align-items:center}
+select,input[type=search]{background:#0e1420;color:#d7deea;border:1px solid #233148;border-radius:10px;padding:10px 12px;outline:none}
+.mapwrap{padding:12px 16px 0}
+#map{width:100%;height:360px;border:1px solid #24334a;border-radius:16px;overflow:hidden}
+main{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
+.card{border:1px solid #24334a;background:linear-gradient(180deg,#0d1420,#0b101a);border-radius:16px;padding:14px;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.card .date{color:#9fb4d4;font-weight:600;font-size:12px;margin-bottom:6px}
+.card h3{margin:2px 0 6px;color:#e9eef7;font-size:18px}
+.card .meta{display:flex;gap:10px;color:#a7b4c9;font-size:12px;margin-bottom:8px}
+.card .tag{border:1px solid #324a6f;border-radius:999px;padding:2px 8px}
+.card .desc{color:#cbd5e7;line-height:1.45}
+.card .demands{margin:8px 0 0 18px;color:#cbd5e7}
+.card .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.card .links a{color:#9dd1ff;text-decoration:none;border-bottom:1px dotted #579dd6}
+.card .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.card .photos img{width:100%;height:72px;object-fit:cover;border-radius:8px;border:1px solid #233148}
+footer{padding:20px;color:#8fa2bd;text-align:center;border-top:1px solid #1c2230}
+.card.marš{border-color:#2a5f36}
+.card.blokada{border-color:#6a4b2d}
+.card.vigilija{border-color:#5b5a2a}
+.card.sukobi{border-color:#6f2a2a}
+.card.umetnost{border-color:#6a2a6a}
+.card.institucije{border-color:#2a5a6f}
+.card.međunarodno{border-color:#2a356f}
+.card.kontraskup{border-color:#5a2a2a}

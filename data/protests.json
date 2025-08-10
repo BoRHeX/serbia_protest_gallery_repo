@@ -1,0 +1,388 @@
+[
+  {
+    "date": "2024-12-22",
+    "city": "Beograd",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "marš",
+    "title": "Opšti štrajk i masovni marš u Beogradu",
+    "description": "Talasi protesta kulminiraju opštim štrajkom i velikom povorkom kroz centar Beograda.",
+    "demands": [
+      "Odgovornost vlasti",
+      "Transparentnost rekonstrukcija"
+    ],
+    "sources": [
+      {
+        "name": "Balkan Insight",
+        "url": "https://balkaninsight.com/2025/01/24/tens-of-thousands-join-serbian-protests-amid-nationwide-strike-effort/"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2024-12-25",
+    "city": "Beograd",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "marš",
+    "title": "Božićni studentski skup",
+    "description": "Višehiljadni studentski protesti nastavljaju pritisak posle tragedije u Novom Sadu.",
+    "demands": [
+      "Istraga",
+      "Odgovornost"
+    ],
+    "sources": [
+      {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/world/2024/dec/25/serbian-students-rally-in-belgrade-in-latest-protest-over-train-station-disaster"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-01-06",
+    "city": "Požarevac",
+    "lat": 44.6213,
+    "lng": 21.1878,
+    "type": "vigilija",
+    "title": "Srednjoškolci: 15 minuta tišine",
+    "description": "Učenici drže tihi protest kao znak podrške pokretu.",
+    "demands": [
+      "Bezbednost i odgovornost"
+    ],
+    "sources": [
+      {
+        "name": "Wikipedia (summary)",
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%93present_Serbian_anti-corruption_protests"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-01-23",
+    "city": "Kraljevo",
+    "lat": 43.724,
+    "lng": 20.687,
+    "type": "marš",
+    "title": "Kraljevo: jaja na SNS kancelarije",
+    "description": "Protestanti gađaju jajima lokalne kancelarije; rastu tenzije u gradovima širom Srbije.",
+    "demands": [
+      "Prestanak nasilja",
+      "Odgovornost lokalnih vlasti"
+    ],
+    "sources": [
+      {
+        "name": "Helsinki Committee (report)",
+        "url": "https://www.helsinki.org.rs/doc/AD%20HOC%20-%20PRVI%20IZVESTAJ%20-%20ENG.pdf"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-02-01",
+    "city": "Novi Sad",
+    "lat": 45.2671,
+    "lng": 19.8335,
+    "type": "blokada",
+    "title": "Blokade tri mosta u Novom Sadu",
+    "description": "Tens of thousands blokiraju Varadinski, Žeželjev i Most slobode.",
+    "demands": [
+      "Uvid u dokumentaciju",
+      "Odgovornost"
+    ],
+    "sources": [
+      {
+        "name": "Reuters",
+        "url": "https://www.reuters.com/world/europe/protesters-block-bridges-serbias-novi-sad-over-november-train-disaster-2025-02-01/"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-02-15",
+    "city": "Kragujevac",
+    "lat": 44.0128,
+    "lng": 20.9114,
+    "type": "marš",
+    "title": "Kragujevac: desetine hiljada",
+    "description": "Simbolična blokada 15:15 — zahtevi za objavu dokumenata i odgovornost.",
+    "demands": [
+      "Objava dokumenata",
+      "Odgovornost",
+      "Podrška obrazovanju"
+    ],
+    "sources": [
+      {
+        "name": "Reuters",
+        "url": "https://www.reuters.com/world/europe/thousands-rally-serbia-over-deadly-railway-disaster-2025-02-15/"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-03-01",
+    "city": "Niš",
+    "lat": 43.3209,
+    "lng": 21.8958,
+    "type": "vigilija",
+    "title": "Niš: tihi marš i komemoracija",
+    "description": "Hiljade u tišini odaju počast žrtvama; momentum pokreta raste.",
+    "demands": [
+      "Odgovornost za Novi Sad",
+      "Vladavina prava"
+    ],
+    "sources": [
+      {
+        "name": "Reuters",
+        "url": "https://www.reuters.com/world/europe/serbians-hold-silent-protest-honour-railway-station-victims-2025-03-01/"
+      },
+      {
+        "name": "Al Jazeera",
+        "url": "https://www.aljazeera.com/news/2025/3/1/thousands-protest-in-serbia-to-honour-railway-station-disaster-victims"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-03-04",
+    "city": "Beograd (Skupština)",
+    "lat": 44.8152,
+    "lng": 20.4606,
+    "type": "institucije",
+    "title": "Dimne bombe i baklje u Skupštini",
+    "description": "Najmanje troje poslanika povređeno tokom haosa u parlamentu.",
+    "demands": [
+      "Transparentnost rada Skupštine",
+      "Poštovanje procedure"
+    ],
+    "sources": [
+      {
+        "name": "AP",
+        "url": "https://apnews.com/article/serbia-lawmakers-injured-parliament-5f8079017f4d0e102e823233af55a51c"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-03-15",
+    "city": "Beograd",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "sukobi",
+    "title": "Masovni skup i navodi o akustičnom uređaju",
+    "description": "Stampedo u masi; AP i drugi traže istragu o navodnoj upotrebi ‘zvučnog oružja’.",
+    "demands": [
+      "Nezavisna forenzička istraga",
+      "Zabrana opreme protiv mirnih skupova"
+    ],
+    "sources": [
+      {
+        "name": "AP (analiza)",
+        "url": "https://apnews.com/article/serbia-sonic-attack-protest-vucic-weapon-214ff2630733b68dd2987e411b405197"
+      },
+      {
+        "name": "AP (demanti)",
+        "url": "https://apnews.com/article/serbia-protest-sonic-weapon-8502587e5849997175a5ea02f98d2e19"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-04-12",
+    "city": "Beograd",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "kontraskup",
+    "title": "Veliki provladin skup (saobraćaj, Orban)",
+    "description": "Vlast organizuje miting podrške u Beogradu; prisustvo stranih lidera.",
+    "demands": [
+      "Podrška vlastima"
+    ],
+    "sources": [
+      {
+        "name": "Reuters",
+        "url": "https://www.reuters.com/world/europe/thousands-gather-pro-government-rally-serbia-2025-04-12/"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-04-16",
+    "city": "Strazbur",
+    "lat": 48.5734,
+    "lng": 7.7521,
+    "type": "međunarodno",
+    "title": "Tour de Strasbourg: sastanci sa EP/SE",
+    "description": "~80 studenata posle 13 dana vožnje — prijemi u EP i Savetu Evrope.",
+    "demands": [
+      "Vladavina prava",
+      "Podrška EU"
+    ],
+    "sources": [
+      {
+        "name": "Council of Europe",
+        "url": "https://www.coe.int/en/web/portal/-/deputy-secretary-general-meets-serbian-students-in-strasbourg"
+      },
+      {
+        "name": "EWB",
+        "url": "https://europeanwesternbalkans.com/2025/04/16/after-cycling-to-strasbourg-serbian-students-meet-with-ep-and-coe-representatives/"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-05-06",
+    "city": "Beograd",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "institucije",
+    "title": "Zahtev za vanredne izbore",
+    "description": "Protesti kulminiraju zahtevom za izbore kao institucionalni izlaz.",
+    "demands": [
+      "Prevremeni izbori"
+    ],
+    "sources": [
+      {
+        "name": "AP",
+        "url": "https://apnews.com/article/22128d59c85389baccc14a503416b885"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-05-21",
+    "city": "Kula",
+    "lat": 45.6131,
+    "lng": 19.525,
+    "type": "sukobi",
+    "title": "Kula: pirotehnika i napadi na građane",
+    "description": "N1 izveštava o pirotehnici i jajima na građane tokom protesta.",
+    "demands": [
+      "Procesuiranje napadača",
+      "Bezbednost skupova"
+    ],
+    "sources": [
+      {
+        "name": "N1 (EN)",
+        "url": "https://n1info.rs/english/news/incidents-at-protest-in-kula-ruling-party-supporters-launch-eggs-pyrotechnics-at-locals/"
+      },
+      {
+        "name": "Wikipedia (sum.)",
+        "url": "https://en.wikipedia.org/wiki/2024%E2%80%93present_Serbian_anti-corruption_protests"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-06-28",
+    "city": "Beograd",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "sukobi",
+    "title": "Masovni protest i hapšenja",
+    "description": "Sukobi sa policijom, suzavac; desetine privedenih.",
+    "demands": [
+      "Prevremeni izbori",
+      "Oslobađanje privedenih"
+    ],
+    "sources": [
+      {
+        "name": "Reuters",
+        "url": "https://www.reuters.com/world/serbias-students-opposition-rally-demand-snap-elections-2025-06-28/"
+      },
+      {
+        "name": "Al Jazeera",
+        "url": "https://www.aljazeera.com/news/2025/6/28/serbian-protesters-rally-in-belgrade-to-demand-snap-election"
+      },
+      {
+        "name": "PBS",
+        "url": "https://www.pbs.org/newshour/world/massive-anti-government-protest-in-serbias-capital-leads-to-dozens-of-arrests"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-06-30",
+    "city": "Srbija (više gradova)",
+    "lat": 44.0165,
+    "lng": 21.0059,
+    "type": "blokada",
+    "title": "Građanska neposlušnost širom zemlje",
+    "description": "Nove blokade nakon hapšenja; Amnesty i drugi upozoravaju na policijsko postupanje.",
+    "demands": [
+      "Puštanje uhapšenih",
+      "Istraga postupanja policije"
+    ],
+    "sources": [
+      {
+        "name": "Balkan Insight",
+        "url": "https://balkaninsight.com/2025/06/30/civil-disobedience-roils-serbia-following-arrests-of-protesters/"
+      },
+      {
+        "name": "Amnesty",
+        "url": "https://www.amnesty.org/en/latest/news/2025/07/serbia-authorities-must-end-unlawful-use-of-force-against-protesters-and-investigate-reports-of-police-violence/"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-08-01",
+    "city": "Novi Sad",
+    "lat": 45.2671,
+    "lng": 19.8335,
+    "type": "institucije",
+    "title": "Uhapšeni u slučaju nadstrešnice",
+    "description": "Reuters: više uhapšenih u istrazi o kolapsu nadstrešnice na stanici.",
+    "demands": [
+      "Efikasna istraga",
+      "Transparentnost"
+    ],
+    "sources": [
+      {
+        "name": "Reuters",
+        "url": "https://www.reuters.com/world/six-arrested-over-serbia-railway-station-roof-collapse-2025-08-01/"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-08-04",
+    "city": "Ženeva / Beograd",
+    "lat": 44.8125,
+    "lng": 20.4612,
+    "type": "međunarodno",
+    "title": "UN (OHCHR): Zaustaviti gušenje pokreta",
+    "description": "Specijalni izvestioci UN pozivaju vlasti da zaštite prava i akademske slobode.",
+    "demands": [
+      "Poštovanje ljudskih prava",
+      "Istraga postupanja"
+    ],
+    "sources": [
+      {
+        "name": "OHCHR",
+        "url": "https://www.ohchr.org/en/press-releases/2025/08/serbia-must-halt-crackdown-student-movement-uphold-human-rights-and-academic"
+      }
+    ],
+    "thumbnail": ""
+  },
+  {
+    "date": "2025-08-09",
+    "city": "Bački Petrovac",
+    "lat": 45.3608,
+    "lng": 19.5881,
+    "type": "umetnost",
+    "title": "‘Slovaci na protestima – podrška studentima’ napadnuta izložba",
+    "description": "Cepanje fotografija i napadi tokom Slovačkih svečanosti; izložba najavljena ponovo.",
+    "demands": [
+      "Zaštita umetničkog izraza",
+      "Sankcionisanje napadača"
+    ],
+    "sources": [
+      {
+        "name": "Nova.rs",
+        "url": "https://nova.rs/vesti/hronika/pristalice-sns-upale-na-manifestaciju-slovacke-svecanosti-i-cepali-fotografije-sa-protesta-raste-tenzija-u-backom-petrovcu-stigla-i-policija-video/"
+      }
+    ],
+    "thumbnail": ""
+  }
+]

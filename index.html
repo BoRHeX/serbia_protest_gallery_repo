@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Izložba protesta u Srbiji — poslednjih 9 meseci</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+  <meta name="description" content="Interaktivna hronologija sa mapom, fotografijama i izvorima.">
+</head>
+<body>
+<header>
+  <h1>IZLOŽBA PROTESTA U SRBIJI</h1>
+  <p class="sub">Novembar 2024 → Avgust 2025 · verifikovani događaji i izvori</p>
+</header>
+
+<section class="controls">
+  <div class="rangewrap">
+    <label for="monthSlider">Do meseca:</label>
+    <input type="range" id="monthSlider" min="0" max="9" value="9" step="1">
+    <span id="monthLabel">Avg 2025</span>
+  </div>
+  <div class="filters">
+    <select id="cityFilter"><option value="">Sve lokacije</option></select>
+    <select id="typeFilter">
+      <option value="">Sve vrste</option>
+      <option value="marš">Marš</option>
+      <option value="blokada">Blokada</option>
+      <option value="vigilija">Vigilija</option>
+      <option value="sukobi">Sukobi</option>
+      <option value="umetnost">Umetnost/izložba</option>
+      <option value="institucije">Institucije</option>
+      <option value="međunarodno">Međunarodno</option>
+      <option value="kontraskup">Kontraskup</option>
+    </select>
+    <input type="search" id="searchBox" placeholder="Pretraga…">
+  </div>
+</section>
+
+<section class="mapwrap"><div id="map"></div></section>
+
+<main id="timeline"></main>
+
+<footer>
+  <p>Javna, čitljiva, arhivska izložba. Linkovi vode ka izvorima. © Zajednica.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="data/protests.json" type="application/json" id="data"></script>
+<script>
+const MONTHS = ['Nov 2024','Dec 2024','Jan 2025','Feb 2025','Mar 2025','Apr 2025','Maj 2025','Jun 2025','Jul 2025','Avg 2025'];
+const monthSlider = document.getElementById('monthSlider');
+const monthLabel = document.getElementById('monthLabel');
+const cityFilter = document.getElementById('cityFilter');
+const typeFilter = document.getElementById('typeFilter');
+const searchBox = document.getElementById('searchBox');
+const timeline = document.getElementById('timeline');
+let MAP, CLUSTER;
+
+function parseData(){
+  const raw = document.getElementById('data').textContent;
+  try { return JSON.parse(raw); } catch(e){ console.error(e); return []; }
+}
+const PROTESTS = parseData();
+
+Array.from(new Set(PROTESTS.map(e => e.city))).sort().forEach(c => {
+  const o = document.createElement('option'); o.value=c; o.textContent=c; cityFilter.appendChild(o);
+});
+
+function monthCutoff(idx){
+  const base = new Date('2024-11-01T00:00:00Z');
+  base.setUTCMonth(base.getUTCMonth()+idx+1);
+  return base;
+}
+function fmtDate(d){
+  const dt = new Date(d);
+  return dt.toLocaleDateString('sr-RS', {year:'numeric', month:'short', day:'2-digit'});
+}
+function thumb(e){
+  if (e.thumbnail) return `<img src="${e.thumbnail}" referrerpolicy="no-referrer" loading="lazy" alt="thumbnail">`;
+  const text = (e.city||'').slice(0,2).toUpperCase();
+  const svg = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='240' height='140'><rect width='100%' height='100%' fill='#1b2638'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='#a9c6ff' font-family='Inter,Arial' font-size='36'>${text}</text></svg>`);
+  return `<img src="data:image/svg+xml,${svg}" alt="placeholder">`;
+}
+function card(e){
+  const imgs = thumb(e) + (e.photos?.length ? e.photos.slice(0,5).map(u=>`<img src="${u}" loading="lazy" referrerpolicy="no-referrer">`).join('') : '');
+  return `
+    <article class="card ${e.type}">
+      <div class="date">${fmtDate(e.date)}</div>
+      <h3>${e.title}</h3>
+      <div class="meta"><span>📍 ${e.city}</span><span class="tag">${e.type}</span></div>
+      <p class="desc">${e.description}</p>
+      ${e.demands?.length ? '<ul class="demands">'+e.demands.map(d=>'<li>'+d+'</li>').join('')+'</ul>' : ''}
+      <div class="photos">${imgs}</div>
+      <div class="links">${e.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.name}</a>`).join('')}</div>
+    </article>`;
+}
+function initMap(){
+  MAP = L.map('map',{scrollWheelZoom:false}).setView([44.8,20.46],7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'&copy; OpenStreetMap'}).addTo(MAP);
+  CLUSTER = L.markerClusterGroup();
+  MAP.addLayer(CLUSTER);
+}
+function refreshMap(events){
+  CLUSTER.clearLayers();
+  events.forEach(e=>{
+    if (!e.lat || !e.lng) return;
+    const m = L.marker([e.lat,e.lng]).bindPopup(`<b>${e.title}</b><br>${fmtDate(e.date)} — ${e.city}`);
+    CLUSTER.addLayer(m);
+  });
+  if (CLUSTER.getLayers().length){
+    MAP.fitBounds(CLUSTER.getBounds().pad(0.2));
+  }
+}
+function render(){
+  const idx = parseInt(monthSlider.value,10);
+  monthLabel.textContent = MONTHS[idx];
+  const limit = monthCutoff(idx);
+  const q = (searchBox.value||'').toLowerCase().trim();
+  const csel = cityFilter.value;
+  const tsel = typeFilter.value;
+  const filtered = PROTESTS.filter(e => {
+    if (new Date(e.date) > limit) return false;
+    if (csel && e.city !== csel) return false;
+    if (tsel && e.type !== tsel) return false;
+    if (q){
+      const hay=(e.title+' '+e.description+' '+(e.demands||[]).join(' ')).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  }).sort((a,b)=>new Date(a.date)-new Date(b.date));
+  timeline.innerHTML = filtered.map(card).join('');
+  refreshMap(filtered);
+}
+initMap();
+monthSlider.addEventListener('input', render);
+cityFilter.addEventListener('change', render);
+typeFilter.addEventListener('change', render);
+searchBox.addEventListener('input', render);
+render();
+</script>
+</body>
+</html>
